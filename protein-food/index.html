@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta de Colaboración — Protein Food × AJL Nutrición</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --gold: #d4af37;
+    --gold-soft: #e8c766;
+    --gray: #1a1a1a;
+    --gray-mid: #2a2a2a;
+    --gray-text: #a8a8a8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+
+  /* HEADER */
+  .hero {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--gray-mid);
+    text-align: center;
+  }
+  .brands {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    margin-bottom: 40px;
+  }
+  .brand-logo {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+  .brand-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+  .brand-logo.ajl {
+    background: var(--black);
+    color: var(--gold);
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+  }
+  .x-mark {
+    color: var(--gold);
+    font-size: 28px;
+    font-weight: 300;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: 44px;
+    font-weight: 900;
+    letter-spacing: -1.2px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  h1 span { color: var(--gold); }
+  .hero p {
+    color: var(--gray-text);
+    font-size: 17px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* SECTION */
+  section { padding: 64px 0; border-bottom: 1px solid var(--gray-mid); }
+  .section-label {
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-size: 10px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.6px;
+    margin-bottom: 36px;
+  }
+
+  /* CONCEPT CARDS */
+  .concept {
+    background: var(--gray);
+    border: 1px solid var(--gray-mid);
+    border-radius: 16px;
+    padding: 36px;
+    margin-bottom: 24px;
+    transition: border-color 0.2s;
+  }
+  .concept:hover { border-color: var(--gold); }
+  .concept-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .concept-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .concept-title {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+  }
+  .concept-sub {
+    color: var(--gold-soft);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  .concept p { color: var(--gray-text); margin-bottom: 16px; }
+  .concept p strong { color: var(--white); font-weight: 600; }
+
+  .hook-box {
+    background: var(--black);
+    border-left: 3px solid var(--gold);
+    padding: 18px 22px;
+    margin: 20px 0;
+    border-radius: 4px;
+    font-size: 15px;
+    font-style: italic;
+    color: var(--white);
+  }
+  .hook-box::before {
+    content: "HOOK";
+    display: block;
+    font-style: normal;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .spec {
+    background: var(--black);
+    padding: 14px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .spec-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .spec-val { font-size: 13px; font-weight: 600; }
+
+  /* DELIVERABLES */
+  .deliverables {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .del {
+    background: var(--gray);
+    border: 1px solid var(--gray-mid);
+    padding: 22px;
+    border-radius: 12px;
+  }
+  .del-icon {
+    color: var(--gold);
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+  .del h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .del p { color: var(--gray-text); font-size: 14px; }
+
+  /* PRICING BANNER */
+  .pricing {
+    background: linear-gradient(135deg, var(--gray) 0%, var(--black) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 48px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing::before {
+    content: "COLABORACIÓN";
+    position: absolute;
+    top: 20px;
+    right: -42px;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    padding: 6px 48px;
+    transform: rotate(35deg);
+  }
+  .pricing h2 { margin-bottom: 8px; }
+  .pricing-sub {
+    color: var(--gray-text);
+    margin-bottom: 32px;
+    font-size: 14px;
+  }
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .price-old {
+    font-size: 32px;
+    color: var(--gray-text);
+    text-decoration: line-through;
+    text-decoration-color: var(--gold);
+    text-decoration-thickness: 3px;
+    font-weight: 600;
+  }
+  .price-new {
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: -2px;
+  }
+  .price-new small { font-size: 24px; color: var(--white); font-weight: 700; margin-right: 4px; }
+  .price-soles {
+    font-size: 14px;
+    color: var(--gray-text);
+    margin-top: 8px;
+  }
+  .price-includes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 32px;
+    text-align: left;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .price-includes li {
+    list-style: none;
+    padding-left: 24px;
+    position: relative;
+    font-size: 14px;
+    color: var(--white);
+  }
+  .price-includes li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 900;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 56px 0;
+    text-align: center;
+  }
+  .cta {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    padding: 18px 44px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    transition: transform 0.15s;
+  }
+  .cta:hover { transform: translateY(-2px); }
+  .footer-meta {
+    margin-top: 32px;
+    color: var(--gray-text);
+    font-size: 13px;
+  }
+  .footer-meta strong { color: var(--gold); }
+
+  @media (max-width: 640px) {
+    h1 { font-size: 32px; }
+    h2 { font-size: 24px; }
+    .specs, .deliverables, .price-includes { grid-template-columns: 1fr; }
+    .price-new { font-size: 48px; }
+    .concept { padding: 24px; }
+    .pricing { padding: 36px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="brands">
+      <div class="brand-logo"><img src="logo-protein-food.png" alt="Protein Food"></div>
+      <span class="x-mark">×</span>
+      <div class="brand-logo ajl">AJL</div>
+    </div>
+    <div class="eyebrow">Propuesta de Colaboración</div>
+    <h1>Protein Food <span>×</span> AJL Nutrición</h1>
+    <p>Dos conceptos de video diseñados para conectar con quien busca comer rico sin salirse de su objetivo de composición corporal.</p>
+  </header>
+
+  <!-- CONCEPTOS -->
+  <section>
+    <div class="section-label">Conceptos Propuestos</div>
+    <h2>Dos rutas. Un mismo objetivo: llenar la tienda de Miraflores.</h2>
+
+    <!-- CONCEPTO 1 -->
+    <div class="concept">
+      <div class="concept-header">
+        <div class="concept-num">1</div>
+        <div>
+          <div class="concept-title">"Si estás en Miraflores…"</div>
+          <div class="concept-sub">Formato Hook Locación · Alta Conversión</div>
+        </div>
+      </div>
+      <p>Abro el video parado en la puerta del local. Hablo directo a cámara, al buyer que está intentando bajar de peso y no quiere renunciar a comer rico. Les traigo <strong>el Crunch</strong> como la opción de almuerzo baja en calorías y alta en proteína que les va a ayudar a no romper la dieta.</p>
+
+      <div class="hook-box">"Si estás intentando perder peso y estás en Miraflores, te traigo el almuerzo que no te va a sacar de tu objetivo — y encima te sobra proteína para el gym."</div>
+
+      <p>Cierra con plano del Crunch, macros en pantalla, y CTA directo a la ubicación. Formato probado en nuestros videos de mayor conversión a tráfico físico.</p>
+
+      <div class="specs">
+        <div class="spec"><div class="spec-label">Duración</div><div class="spec-val">35–50 seg</div></div>
+        <div class="spec"><div class="spec-label">Formato</div><div class="spec-val">Talking Head + B-roll</div></div>
+        <div class="spec"><div class="spec-label">Objetivo</div><div class="spec-val">Tráfico al local</div></div>
+      </div>
+    </div>
+
+    <!-- CONCEPTO 2 -->
+    <div class="concept">
+      <div class="concept-header">
+        <div class="concept-num">2</div>
+        <div>
+          <div class="concept-title">"El almuerzo que buscaba el Protein Food"</div>
+          <div class="concept-sub">Formato Loop Reveal · Alto Retention</div>
+        </div>
+      </div>
+      <p><strong>Retention loop de 4 platos tapados.</strong> En mesa aparecen 4 almuerzos cubiertos — el viewer no sabe qué son. Los voy revelando uno por uno mientras digo las calorías de cada uno: <em>"este tiene tantas kcal… este tiene tantas… este tiene tantas…"</em>. Son almuerzos clásicos de cocina casera o de comida rápida, los que uno agarra cuando no hay tiempo.</p>
+
+      <div class="hook-box">"Sabemos que estas son las opciones que sueles buscar cuando tienes poco tiempo… pero tener poco tiempo no debería ser una razón para no nutrirte como corresponde. Por eso existen los nuevos Crunch de Protein Food."</div>
+
+      <p>El cuarto reveal es <strong>el Crunch</strong> — mismo formato práctico, pero con los macros que sí te acercan a tu objetivo. El loop funciona porque el viewer se queda a ver cuál es la "solución" después de tres problemas. Protein Food queda posicionado como la respuesta obvia, no como una opción más.</p>
+
+      <div class="specs">
+        <div class="spec"><div class="spec-label">Duración</div><div class="spec-val">40–60 seg</div></div>
+        <div class="spec"><div class="spec-label">Formato</div><div class="spec-val">Loop Reveal + VO</div></div>
+        <div class="spec"><div class="spec-label">Objetivo</div><div class="spec-val">Awareness + Tráfico</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTREGABLES -->
+  <section>
+    <div class="section-label">Qué Incluye</div>
+    <h2>Entregables de la colaboración</h2>
+    <div class="deliverables">
+      <div class="del">
+        <div class="del-icon">01</div>
+        <h3>1 Video Principal</h3>
+        <p>Guión, grabación y edición profesional del concepto elegido.</p>
+      </div>
+      <div class="del">
+        <div class="del-icon">02</div>
+        <h3>Publicación en TikTok</h3>
+        <p>Post en @alejandrojloayza con copy optimizado + hashtags.</p>
+      </div>
+      <div class="del">
+        <div class="del-icon">03</div>
+        <h3>Colaboración en Instagram</h3>
+        <p>Reel con etiqueta de colaborador → aparece en ambos perfiles.</p>
+      </div>
+      <div class="del">
+        <div class="del-icon">04</div>
+        <h3>Cobertura en Stories</h3>
+        <p>Storytelling del video en Instagram Stories para amplificar alcance y dar contexto a la audiencia.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section>
+    <div class="pricing">
+      <div class="section-label">Inversión</div>
+      <h2>Tarifa Especial Colaboración</h2>
+      <div class="pricing-sub">Nuestra tarifa estándar para este paquete es USD 300. Por ser una primera colaboración con Protein Food, lo ajustamos.</div>
+
+      <div class="price-row">
+        <div class="price-old">USD 300</div>
+        <div class="price-new"><small>USD</small>200</div>
+      </div>
+      <div class="price-soles">(Equivalente aprox. a S/ 760 al tipo de cambio actual)</div>
+
+      <ul class="price-includes">
+        <li>Video TikTok + Reel IG</li>
+        <li>Colaboración en ambos perfiles</li>
+        <li>Guión y dirección creativa</li>
+        <li>Edición profesional</li>
+        <li>Análisis nutricional del producto</li>
+        <li>Difusión a audiencia AJL</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-meta">
+      <strong>AJL Nutrición</strong> · Alejandro Loayza · Nutricionista Colegiado<br>
+      Propuesta válida por 15 días
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
