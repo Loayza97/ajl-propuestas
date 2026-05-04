@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guion — Top 5 Súper × San Fernando</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: #faf9f7;
+    color: #1a1a1a;
+    line-height: 1.55;
+    padding: 40px 24px 80px;
+  }
+  .container { max-width: 1240px; margin: 0 auto; }
+
+  header { margin-bottom: 28px; }
+  h1 {
+    font-size: 30px;
+    margin: 0 0 6px;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+  }
+  .meta {
+    color: #666;
+    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .pill {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #f5d76e;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .pill.gold { background: #f5d76e; color: #1a1a1a; }
+  .pill.red { background: #c93838; color: white; }
+  .meta .sep { color: #ccc; }
+
+  h2 {
+    font-size: 17px;
+    margin: 36px 0 12px;
+    letter-spacing: -0.005em;
+    font-weight: 700;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 6px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border: 1px solid #e0ddd6;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  th {
+    text-align: left;
+    padding: 11px 14px;
+    background: #1a1a1a;
+    color: #f5d76e;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  td {
+    padding: 14px;
+    vertical-align: top;
+    border-top: 1px solid #ece9e1;
+    font-size: 14px;
+  }
+  tr:first-child td { border-top: none; }
+
+  .timecode, .hook-id {
+    font-family: ui-monospace, "SF Mono", "Menlo", monospace;
+    font-weight: 700;
+    color: #444;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+  .section-name {
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .narracion {
+    font-style: italic;
+    color: #2a2a2a;
+  }
+  .pendiente {
+    color: #b08800;
+    font-style: italic;
+    font-size: 13px;
+  }
+
+  /* Fila destacada para corte San Fernando */
+  .sf-row { background: linear-gradient(0deg, #fff8e1, #fff8e1); }
+  .sf-row td { border-top-color: #f5d76e; }
+  .sf-row .section-name { color: #8a6d00; }
+  .sf-row .section-name::before { content: "🔴 "; }
+
+  /* Hooks */
+  .hook-id {
+    background: #1a1a1a;
+    color: #f5d76e;
+    padding: 4px 9px;
+    border-radius: 6px;
+    font-size: 12px;
+    display: inline-block;
+  }
+
+  /* Banner pendiente */
+  .banner-pendiente {
+    background: #fff4d6;
+    border: 1px solid #f5d76e;
+    border-left: 4px solid #c89c00;
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin-bottom: 22px;
+    font-size: 14px;
+    color: #5a4800;
+  }
+  .banner-pendiente strong { color: #1a1a1a; }
+  .banner-pendiente .tag {
+    display: inline-block;
+    background: #c89c00;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-right: 8px;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  /* Checklist */
+  .checklist {
+    margin-top: 32px;
+    background: white;
+    border: 1px solid #e0ddd6;
+    border-radius: 8px;
+    padding: 22px 26px;
+  }
+  .checklist h3 { margin: 0 0 14px; font-size: 16px; font-weight: 700; }
+  .checklist .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+  }
+  .check-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 13px;
+    padding: 4px 0;
+  }
+  .check-item .icon { color: #1d8c3a; font-weight: 800; flex-shrink: 0; }
+  .check-item .icon.pending { color: #c89c00; }
+  .check-item .label strong { font-weight: 600; }
+  .check-item .where { color: #888; font-size: 11px; }
+
+  /* Notas */
+  .notes {
+    margin-top: 24px;
+    padding: 16px 20px;
+    background: #fff8e1;
+    border-left: 4px solid #f5d76e;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #5a4800;
+  }
+  .notes strong { color: #1a1a1a; }
+
+  /* Acciones */
+  .actions {
+    margin-bottom: 24px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  button {
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: inherit;
+  }
+  button:hover { background: #333; }
+  button.secondary { background: white; color: #1a1a1a; border: 1px solid #1a1a1a; }
+  button.secondary:hover { background: #f0ede4; }
+
+  /* Print */
+  @media print {
+    body { background: white; padding: 12px 0; }
+    .actions { display: none; }
+    table, .checklist { page-break-inside: avoid; box-shadow: none; }
+    h2 { break-after: avoid-page; }
+    .container { max-width: 100%; }
+  }
+
+  @media (max-width: 720px) {
+    body { padding: 24px 12px 60px; }
+    h1 { font-size: 24px; }
+    .checklist .grid { grid-template-columns: 1fr; }
+    th, td { padding: 10px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Top 5 Supermercado para Perder Peso × San Fernando</h1>
+    <div class="meta">
+      <span class="pill">REEL / TIKTOK</span>
+      <span class="sep">·</span>
+      <span>Duración objetivo: <strong>~85s</strong></span>
+      <span class="sep">·</span>
+      <span>Brief: SF abr-21</span>
+      <span class="sep">·</span>
+      <span>v2 · 2026-05-04</span>
+    </div>
+  </header>
+
+  <div class="actions">
+    <button onclick="window.print()">🖨 Imprimir / Exportar PDF</button>
+    <button class="secondary" onclick="document.body.classList.toggle('compact')">↔ Compactar</button>
+  </div>
+
+  <h2>Hook</h2>
+  <table>
+    <colgroup>
+      <col style="width: 70px">
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Hook</th>
+        <th>Narración</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="hook-id">H1</span></td>
+        <td class="narracion">"Si estás intentando perder peso pero no sabes qué comprar en el súper, quédate. Te doy mi top 5 de ítems que recomiendo a TODOS mis pacientes. El último es el más sorprendente de todos."</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Guion Técnico</h2>
+  <table>
+    <colgroup>
+      <col style="width: 110px">
+      <col style="width: 220px">
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th>Tiempo</th>
+        <th>Sección</th>
+        <th>Narración</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="timecode">00:00 – 00:08</td>
+        <td class="section-name">HOOK</td>
+        <td class="narracion">"Si estás intentando perder peso pero no sabes qué comprar en el súper, quédate. Te doy mi top 5 de ítems que recomiendo a TODOS mis pacientes. El último es el más sorprendente de todos."</td>
+      </tr>
+      <tr>
+        <td class="timecode">00:08 – 00:18</td>
+        <td class="section-name">#5 — Tilapia Bell's</td>
+        <td class="narracion">"Puesto número cinco: tilapia de Bell's, congelada. Pescado magro, prote pura, listo en 10 minutos a la sartén. Si nunca tienes tiempo de cocinar, esta es tu salvada."</td>
+      </tr>
+      <tr>
+        <td class="timecode">00:18 – 00:28</td>
+        <td class="section-name">#4 — Yogurt Svelte</td>
+        <td class="narracion">"Cuatro: yogurt natural Svelte. Sin azúcar añadida, alto en proteína. Es mi snack de la tarde con fruta o el desayuno apurado. Cero excusas."</td>
+      </tr>
+      <tr>
+        <td class="timecode">00:28 – 00:38</td>
+        <td class="section-name">#3 — Spray Mazola</td>
+        <td class="narracion">"Tres: spray de aceite. Una cucharada de aceite son 120 calorías; un rociado del spray son 5. La diferencia entre bajar de peso y trabarte está acá."</td>
+      </tr>
+      <tr>
+        <td class="timecode">00:38 – 00:48</td>
+        <td class="section-name">#2 — Papas para hornear</td>
+        <td class="narracion">"Dos: papas precortadas para hornear. Sí, papas. Al horno, sin aceite extra, son almidón sano, sacian, y matan el antojo de delivery. El truco es hornearlas, NO freírlas."</td>
+      </tr>
+      <tr class="sf-row">
+        <td class="timecode">00:48 – 01:05</td>
+        <td class="section-name">CORTE SAN FERNANDO</td>
+        <td class="narracion">"Y sabemos que perder peso puede ser muy difícil — por eso siempre buscamos productos bajos en calorías y súper prácticos. Como los nuevos Nuggets horneados de San Fernando: ahora con 70% menos grasa. Para que puedas darte un gustito y potenciar tu día con su sabor irresistible, sin descuidar la figura. Ahora sí, sigamos."</td>
+      </tr>
+      <tr>
+        <td class="timecode">01:05 – 01:18</td>
+        <td class="section-name">#1 — Hellmann's Light</td>
+        <td class="narracion">"Y el número uno — el que NADIE espera: mayonesa Hellmann's Light. La mayonesa común tiene 90 calorías por cucharada; la Light tiene 35. Si te gusta la mayonesa, el problema NO era la mayonesa, era cuál estabas comprando."</td>
+      </tr>
+      <tr>
+        <td class="timecode">01:18 – 01:28</td>
+        <td class="section-name">CTA / Cierre</td>
+        <td class="narracion">"Así que no te compliques y empieza a comprar con estrategia. Si quieres la lista de compras que le recomendamos a nuestros pacientes que intentan perder peso, comenta la palabra LISTA y te la enviamos."</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="checklist">
+    <h3>✅ Cumplimiento Brief San Fernando — abr 21</h3>
+    <div class="grid">
+      <div class="check-item">
+        <span class="icon">✓</span>
+        <div><strong>"70% menos grasa"</strong><div class="where">Narración corte SF</div></div>
+      </div>
+      <div class="check-item">
+        <span class="icon">✓</span>
+        <div><strong>"Horneados"</strong><div class="where">"Nuggets horneados de San Fernando"</div></div>
+      </div>
+      <div class="check-item">
+        <span class="icon">✓</span>
+        <div><strong>"Irresistible"</strong><div class="where">"sabor irresistible"</div></div>
+      </div>
+      <div class="check-item">
+        <span class="icon">✓</span>
+        <div><strong>"Potenciar tu día"</strong><div class="where">Alternativa aprobada al claim "energía para tu día a día"</div></div>
+      </div>
+      <div class="check-item">
+        <span class="icon">✓</span>
+        <div><strong>Marca SF (no temprano)</strong><div class="where">Aparece en seg 48 — 56% del video</div></div>
+      </div>
+      <div class="check-item">
+        <span class="icon">✓</span>
+        <div><strong>Producto: Nuggets</strong><div class="where">Solo nuggets, 0 hamburguesas</div></div>
+      </div>
+      <div class="check-item">
+        <span class="icon">✓</span>
+        <div><strong>Sin claim "proteína = energía"</strong><div class="where">Reemplazado por "potenciar tu día" (claim aprobado)</div></div>
+      </div>
+      <div class="check-item">
+        <span class="icon">✓</span>
+        <div><strong>Sin contenido de sodio</strong><div class="where">No se menciona</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
